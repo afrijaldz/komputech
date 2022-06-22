@@ -22,6 +22,7 @@ import Route from "@ioc:Adonis/Core/Route";
 // import "./routes/auth";
 // import "./routes/orders";
 import "./routes/products";
+import "./routes/product-categories";
 
 Route.get("/", async () => {
   return { hello: "world" };
