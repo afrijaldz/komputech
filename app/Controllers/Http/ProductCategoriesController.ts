@@ -1,11 +1,12 @@
-import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
-import Application from "@ioc:Adonis/Core/Application";
-
 import ProductCategory from "App/Models/ProductCategory";
 
 export default class ProductCategoriesController {
-  public async index(ctx: HttpContextContract) {
-    return "bisa";
+  public async index({ response }) {
+    const data = await ProductCategory.all();
+
+    response.json({
+      data,
+    });
   }
 
   public async create({ request, response }) {
