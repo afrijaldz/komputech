@@ -1,9 +1,21 @@
 import type { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 import Product from "App/Models/Product";
+import Database from "@ioc:Adonis/Lucid/Database";
 
 export default class ProductsController {
   public async index(ctx: HttpContextContract) {
     return "bisa";
+  }
+
+  public async newest({ response }) {
+    const data = await Database.query()
+      .from("products")
+      .orderBy("id", "desc")
+      .limit(6);
+
+    response.json({
+      data,
+    });
   }
 
   public async detail(ctx: HttpContextContract) {
