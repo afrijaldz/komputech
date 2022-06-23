@@ -45,11 +45,11 @@ export default class ProductsController {
 
     const productData = {
       name,
-      price,
+      price: parseFloat(price),
       product_category_id,
       description,
       specification,
-      image: image.fileName,
+      image: `products/${image.fileName}`,
     };
 
     const data = await Product.create(productData);
