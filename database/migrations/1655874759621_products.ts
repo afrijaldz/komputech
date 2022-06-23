@@ -8,7 +8,14 @@ export default class extends BaseSchema {
       table.increments("id");
 
       table.string("name");
-      table.float("discount_amount");
+      table.float("price");
+      table.string("description");
+      table.string("specification");
+      table
+        .integer("product_category_id")
+        .unsigned()
+        .references("id")
+        .inTable("product_categories");
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
