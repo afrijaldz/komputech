@@ -3,8 +3,12 @@ import Product from "App/Models/Product";
 import Database from "@ioc:Adonis/Lucid/Database";
 
 export default class ProductsController {
-  public async index(ctx: HttpContextContract) {
-    return "bisa";
+  public async index({ request, response }) {
+    const products = await Product.query().preload("product_category");
+
+    response.json({
+      data: products,
+    });
   }
 
   public async newest({ response }) {
