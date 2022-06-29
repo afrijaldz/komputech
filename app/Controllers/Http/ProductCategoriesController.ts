@@ -18,7 +18,7 @@ export default class ProductCategoriesController {
     });
 
     if (!image) {
-      return;
+      return response.status(422).send("Image not found");
     }
 
     if (!image.isValid) {
