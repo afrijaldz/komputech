@@ -96,4 +96,15 @@ export default class ProductCategoriesController {
       data: newData,
     });
   }
+
+  public async delete({ request, response }) {
+    const { id } = request.params();
+
+    const data = await ProductCategory.findOrFail(id);
+    await data.delete();
+
+    response.json({
+      data: data,
+    });
+  }
 }
