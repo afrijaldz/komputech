@@ -11,6 +11,16 @@ export default class ProductsController {
     });
   }
 
+  public async detail({ request, response }) {
+    const { id } = request.params();
+
+    const data = await Product.find(id);
+
+    response.json({
+      data,
+    });
+  }
+
   public async newest({ response }) {
     const data = await Database.query()
       .from("products")
@@ -20,10 +30,6 @@ export default class ProductsController {
     response.json({
       data,
     });
-  }
-
-  public async detail(ctx: HttpContextContract) {
-    return "detail";
   }
 
   public async create({ request, response }) {
